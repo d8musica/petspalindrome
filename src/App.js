@@ -11,7 +11,9 @@ function App() {
   const [specie, setSpecie] = useState("");
   const [id,setId]=useState("");
 
-  const REACT_APP_CRUD_API = process.env;
+
+  
+  
 
   function handleSubmit(event){
     event.preventDefault();
@@ -21,8 +23,10 @@ function App() {
       name: {name}.name,
       specie: {specie}.specie
     }
+
+   
     
-    axios.post('https://crudcrud.com/api/${REACT_APP_CRUD_API}/pets', body)
+    axios.post(`https://crudcrud.com/api/${process.env.REACT_APP_CRUD_API}/pets`, body)
     .then(function (response) {
       console.log(response);
     })
@@ -35,7 +39,7 @@ function App() {
 
   function getPets(e){
     e.preventDefault();
-    axios.get('https://crudcrud.com/api/${REACT_APP_CRUD_API}/pets')
+    axios.get(`https://crudcrud.com/api/${process.env.REACT_APP_CRUD_API}/pets`)
   .then(function (response) {
     // handle success
     console.log(response.data);
@@ -61,9 +65,9 @@ function App() {
     }
     e.preventDefault();
 
-    console.log('https://crudcrud.com/api/${REACT_APP_CRUD_API}/pets/'+ {id}.id)
+    console.log(`https://crudcrud.com/api/${process.env.REACT_APP_CRUD_API}/pets/`+ {id}.id)
     
-    axios.put('https://crudcrud.com/api/${REACT_APP_CRUD_API}/pets/'+ {id}.id, body)
+    axios.put(`https://crudcrud.com/api/${process.env.REACT_APP_CRUD_API}/pets/`+ {id}.id, body)
     .then(function (response) {
       console.log(response);
     })
@@ -79,7 +83,7 @@ function App() {
 
     e.preventDefault();
 
-    axios.delete('https://crudcrud.com/api/${REACT_APP_CRUD_API}/pets/'+ {id}.id)
+    axios.delete(`https://crudcrud.com/api/${process.env.REACT_APP_CRUD_API}/pets/`+ {id}.id)
     .then(function (response) {
       console.log(response);
     })
